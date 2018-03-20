@@ -94,11 +94,6 @@ for b in setdiff(bus_set, [root_bus])
     @NLconstraint(m, -v[b] + z_v * 2 * sqrt(sum(rPTDF[l.index, b] * l.r * sum(rPTDF[l.index, j] * (var_P[j] + α[j]^2*var_sum_P) for j in bus_set) for l in line_arr) +
                                             sum(rPTDF[l.index, b] * l.x * sum(rPTDF[l.index, j] * (var_Q[j] + α[j]^2*var_sum_Q) for j in bus_set) for l in line_arr))
                       <= -buses[b].v_min)
-
-    # @NLconstraint(m,  v[b] + z_v * sqrt(4 * sum(rPTDF[l.index, k] *((l.r^2)*(var_P[k] + (α[k]^2)*var_sum_P) + 
-    #                                          (l.x^2)*(var_Q[k] + (α[k]^2)*var_sum_Q)) for k in bus_set)) <= buses[b].v_max)
-    # @NLconstraint(m, -v[b] + z_v * sqrt(4 * sum(rPTDF[l.index, k] *((l.r^2)*(var_P[k] + (α[k]^2)*var_sum_P) +
-    #                                          (l.x^2)*(var_Q[k] + (α[k]^2)*var_sum_Q)) for k in bus_set)) <= -buses[b].v_min)
 end
 
 solve(m)

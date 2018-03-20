@@ -22,7 +22,7 @@ ERROR_VARIANCES_TRUE, ERROR_VARIANCES_WC, ERROR_VARIANCES_SAMPLE =
     init_stochasticity(variance_opt="implicit")
 
 
-To test feasability
+# To test feasability
 ld_objective, ld_bus_results, ld_line_results = Solve_LinDist(BUSES, LINES, GENERATORS)
 info("Results of standard lindist. Objective: $ld_objective")
 println(ld_bus_results)
